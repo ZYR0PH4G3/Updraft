@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://kyxey8ul5ip5"]
+
+[ext_resource type="Texture2D" uid="uid://ce4hqd8rm2jbe" path="res://assets/8035930c-04d5-4574-8d91-f684f9704ea3.jpg" id="1_aehny"]
+[ext_resource type="PackedScene" uid="uid://l4mimevus11p" path="res://spaceship.tscn" id="2_cgf7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nfwx"]
+size = Vector2(1152, 72)
+
+[node name="Game scene" type="Node2D" unique_id=38723924]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=356571394]
+repeat_size = Vector2(0, 648)
+autoscroll = Vector2(0, 100)
+
+[node name="Background" type="TextureRect" parent="Parallax2D" unique_id=1482403638]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_aehny")
+expand_mode = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=371972205]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=373254601]
+position = Vector2(576, 612)
+shape = SubResource("RectangleShape2D_3nfwx")
+
+[node name="Spaceship" parent="." unique_id=1088702449 instance=ExtResource("2_cgf7r")]
+position = Vector2(520, 456)
