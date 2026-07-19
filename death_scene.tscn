@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://co472wq46c7ng"]
+
+[ext_resource type="Texture2D" uid="uid://c0cfqxsy0gllq" path="res://Sprite-0001.png" id="1_bea04"]
+[ext_resource type="Script" uid="uid://bqkqiltuvrkih" path="res://death_scene.gd" id="1_y2fqr"]
+[ext_resource type="Texture2D" uid="uid://diha0xua1w73g" path="res://download (1).png" id="3_fxiyg"]
+
+[node name="Death Scene" type="Node2D" unique_id=1864514487]
+script = ExtResource("1_y2fqr")
+
+[node name="Background art" type="Sprite2D" parent="." unique_id=1756011127]
+position = Vector2(796, 478.00003)
+scale = Vector2(1.3819444, 1.4753087)
+texture = ExtResource("1_bea04")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=960652612]
+position = Vector2(576, 324)
+scale = Vector2(3.3488374, 3.3749998)
+texture = ExtResource("3_fxiyg")
+
+[node name="Your Score" type="RichTextLabel" parent="." unique_id=240273903]
+clip_contents = false
+offset_left = 432.0
+offset_top = 256.0
+offset_right = 800.0
+offset_bottom = 296.0
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/normal_font_size = 41
+text = "Your Score:"
+
+[node name="DeathMessage" type="RichTextLabel" parent="." unique_id=899435233]
+clip_contents = false
+offset_left = 216.0
+offset_top = 40.0
+offset_right = 904.0
+offset_bottom = 200.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 108
+text = "You Crashed"
+scroll_active = false
+
+[node name="Retry" type="Button" parent="." unique_id=1305758617]
+offset_left = 504.0
+offset_top = 328.0
+offset_right = 615.0
+offset_bottom = 391.0
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 40
+text = "Retry
+"
+
+[node name="Quit" type="Button" parent="." unique_id=1880193667]
+offset_left = 504.0
+offset_top = 408.0
+offset_right = 615.0
+offset_bottom = 471.0
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 40
+text = "Quit
+
+"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 	var player = get_tree().get_first_node_in_group("Player")
 	if not player:
-		player = get_node_or_null("/root/Game scene/Ship") 
+		player = get_node_or_null("/root/Game scene/Spaceship") 
 		
 	if player:
 		if global_position.y > player.global_position.y + despawn_distance:
@@ -38,4 +38,9 @@ func _on_score_area_body_entered(body: Node2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Spaceship" or body.is_in_group("Player"):
-		get_tree().call_deferred("reload_current_scene")
+		
+		var main_game = get_tree().current_scene
+		if main_game and "score" in main_game:
+			Global.final_score = main_game.score
+		
+		get_tree().call_deferred("change_scene_to_file", "res://death_scene.tscn")

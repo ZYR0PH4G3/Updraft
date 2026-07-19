@@ -1,10 +1,47 @@
 [gd_scene format=3 uid="uid://cqgpnd2huc3f1"]
 
 [ext_resource type="Texture2D" uid="uid://bpqvqkmplr483" path="res://download.png" id="1_37p78"]
+[ext_resource type="Script" uid="uid://b1smv7cfsff7v" path="res://hud.gd" id="1_640wx"]
+[ext_resource type="Texture2D" uid="uid://c0cfqxsy0gllq" path="res://Sprite-0001.png" id="2_a2258"]
+[ext_resource type="Texture2D" uid="uid://diha0xua1w73g" path="res://download (1).png" id="3_1xsix"]
 
 [node name="TitleScreen" type="Node2D" unique_id=158988258]
+script = ExtResource("1_640wx")
 
-[node name="Download" type="Sprite2D" parent="." unique_id=925795601]
+[node name="Background" type="TextureRect" parent="." unique_id=2098122521]
+offset_right = 1152.0
+offset_bottom = 680.0
+texture = ExtResource("2_a2258")
+
+[node name="Background art" type="Sprite2D" parent="." unique_id=173559039]
+position = Vector2(576, 340)
+scale = Vector2(3.3488371, 3.5416667)
+texture = ExtResource("3_1xsix")
+
+[node name="Title" type="Sprite2D" parent="." unique_id=925795601]
 position = Vector2(580, 204)
 scale = Vector2(2.2093024, 1.5416666)
 texture = ExtResource("1_37p78")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=68695579]
+offset_left = 456.0
+offset_top = 368.0
+offset_right = 682.0
+offset_bottom = 512.0
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=2036944865]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1060049839]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 40
+text = "Quit
+"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

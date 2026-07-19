@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Updraft"
-run/main_scene="uid://kyxey8ul5ip5"
+run/main_scene="uid://cqgpnd2huc3f1"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://dhp1mj06fsxbk"
 
 [display]
 
