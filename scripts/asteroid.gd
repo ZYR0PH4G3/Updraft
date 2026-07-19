@@ -7,13 +7,13 @@ var direction: float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if randf() > 0.5:
-		direction = 1.0
-		global_position.x = 20
+	direction =1.0 if randf() > 0.5 else -1.0
+	
+	if direction == 1.0:
+		global_position.x = 20.0
 	
 	else:
-		direction = -1
-		global_position.x = 380
+		global_position.x = 380.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

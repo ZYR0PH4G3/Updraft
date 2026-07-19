@@ -3,7 +3,7 @@ extends Area2D
 @export var movement_distance: float = 150.0
 @export var speed: float = 1.0
 
-var start_x: float
+var start_x: float 
 var time_passed: float = 0.0
 
 # Called when the node enters the scene tree for the first time.

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var crusher_scene: Array[PackedScene] = []
+@export var crusher_scene: PackedScene 
 @export var spaceship: CharacterBody2D
 
 @export var spawn_distance: float = 800.0
@@ -12,7 +12,8 @@ var next_spawn_y:float = 0.0
 var score: int = 0
 
 func _ready() -> void:
-	next_spawn_y = spaceship.global_position.y - spawn_distance
+	if spaceship:
+		next_spawn_y = spaceship.global_position.y - spawn_distance
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,22 +24,18 @@ func _process(delta: float) -> void:
 		spawn_obstacle()
 
 func spawn_obstacle() -> void:
-	var random_index = randi() % crusher_scene.size()
-	var selected_scene = crusher_scene[random_index]
-	
-	var new_obstacle = selected_scene.instantiate()
+	var new_obstacle = crusher_scene.instantiate()
 	
 	new_obstacle.global_position.y = next_spawn_y
 	
 	new_obstacle.global_position.x = 200
 	
 	if "start_x" in new_obstacle:
-		new_obstacle.global_position.x = randf_range(-50.0, 50.0)
+		new_obstacle.global_position.x += randf_range(-50.0, 50.0)
 	
 	add_child(new_obstacle)
 	
 	next_spawn_y -= spawn_distance
-	
 
 func add_point() -> void:
 	score += 1
