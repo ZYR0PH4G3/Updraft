@@ -33,9 +33,6 @@ shape = SubResource("RectangleShape2D_3nfwx")
 [node name="Spaceship" parent="." unique_id=1088702449 instance=ExtResource("2_cgf7r")]
 position = Vector2(512, 336)
 
-[node name="Crushers" parent="." unique_id=2005360761 instance=ExtResource("4_3ppnj")]
-position = Vector2(-16, 80)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2009053176]
 
 [node name="Score" type="RichTextLabel" parent="CanvasLayer" unique_id=767517989]

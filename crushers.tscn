@@ -9,6 +9,21 @@ size = Vector2(1096, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vclpj"]
 size = Vector2(1096, 40)
 
+[sub_resource type="GDScript" id="GDScript_gfulq"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body: Node2D) -> void:
+		if body.name == \"Spaceship\" or body.is_in_group(\"Player\"):
+			var main_game = get_tree().current_scene
+		
+			if main_game and main_game.has_method(\"add_point\"):
+				main_game.add_point()
+		
+			if has_node(\"CollisionShape2D\"):
+				$CollisionShape2D.call_deferred(\"set_disabled\", true)
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocnw0"]
 size = Vector2(133, 10)
 
@@ -30,6 +45,7 @@ offset_bottom = 104.0
 texture = ExtResource("2_o5bbk")
 
 [node name="ScoreArea" type="Area2D" parent="." unique_id=1000909556]
+script = SubResource("GDScript_gfulq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1574491662]
 position = Vector2(592, 8)
