@@ -9,6 +9,9 @@ size = Vector2(1096, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vclpj"]
 size = Vector2(1096, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocnw0"]
+size = Vector2(133, 10)
+
 [node name="Crushers" type="Area2D" unique_id=2005360761]
 script = ExtResource("1_gfulq")
 
@@ -25,5 +28,11 @@ offset_left = -560.0
 offset_right = 1744.0
 offset_bottom = 104.0
 texture = ExtResource("2_o5bbk")
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=1000909556]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1574491662]
+position = Vector2(592, 8)
+shape = SubResource("RectangleShape2D_ocnw0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

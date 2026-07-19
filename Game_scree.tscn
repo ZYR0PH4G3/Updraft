@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kyxey8ul5ip5"]
 
 [ext_resource type="Texture2D" uid="uid://ce4hqd8rm2jbe" path="res://assets/8035930c-04d5-4574-8d91-f684f9704ea3.jpg" id="1_aehny"]
+[ext_resource type="Script" uid="uid://0c7da015m3s7" path="res://scripts/spawner_system.gd" id="1_skpbr"]
 [ext_resource type="PackedScene" uid="uid://l4mimevus11p" path="res://spaceship.tscn" id="2_cgf7r"]
 [ext_resource type="Script" uid="uid://b30c7ex0xkgkl" path="res://scripts/Obstacle.gd" id="2_nyvos"]
 [ext_resource type="PackedScene" uid="uid://cfb3gyrctuhtc" path="res://crushers.tscn" id="4_3ppnj"]
@@ -8,7 +9,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nfwx"]
 size = Vector2(1152, 72)
 
-[node name="Game scene" type="Node2D" unique_id=38723924]
+[node name="Game scene" type="Node2D" unique_id=38723924 node_paths=PackedStringArray("spaceship")]
+script = ExtResource("1_skpbr")
+crusher_scene = ExtResource("4_3ppnj")
+spaceship = NodePath("Spaceship")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=356571394]
 repeat_size = Vector2(0, 648)
@@ -32,5 +36,17 @@ position = Vector2(512, 336)
 
 [node name="Crushers" parent="." unique_id=2005360761 instance=ExtResource("4_3ppnj")]
 position = Vector2(-16, 80)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2009053176]
+
+[node name="Score" type="RichTextLabel" parent="CanvasLayer" unique_id=767517989]
+clip_contents = false
+offset_left = 64.0
+offset_right = 136.0
+offset_bottom = 72.0
+theme_override_constants/outline_size = 17
+theme_override_font_sizes/normal_font_size = 56
+text = "0"
+scroll_active = false
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

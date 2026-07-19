@@ -23,4 +23,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Spaceship":
 		print("GameOver!")
-		get_tree().reload_current_scene()
+		get_tree().call_deferred("reload_current_scene")
+
+
+func _on_score_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
