@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cfb3gyrctuhtc"]
+
+[ext_resource type="Script" uid="uid://cvtf0eev0tr78" path="res://scripts/crushers.gd" id="1_gfulq"]
+[ext_resource type="Texture2D" uid="uid://dsxlwle8ebfpt" path="res://assets/Crushers.png" id="2_o5bbk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nfwx"]
+size = Vector2(1096, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vclpj"]
+size = Vector2(1096, 40)
+
+[node name="Crushers" type="Area2D" unique_id=2005360761]
+script = ExtResource("1_gfulq")
+
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="." unique_id=36665791]
+position = Vector2(-12, 52)
+shape = SubResource("RectangleShape2D_3nfwx")
+
+[node name="CollisionShape2D_right" type="CollisionShape2D" parent="." unique_id=495508502]
+position = Vector2(1196, 52)
+shape = SubResource("RectangleShape2D_vclpj")
+
+[node name="Crushers" type="TextureRect" parent="." unique_id=1021951344]
+offset_left = -560.0
+offset_right = 1744.0
+offset_bottom = 104.0
+texture = ExtResource("2_o5bbk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ce4hqd8rm2jbe" path="res://assets/8035930c-04d5-4574-8d91-f684f9704ea3.jpg" id="1_aehny"]
 [ext_resource type="PackedScene" uid="uid://l4mimevus11p" path="res://spaceship.tscn" id="2_cgf7r"]
+[ext_resource type="Script" uid="uid://b30c7ex0xkgkl" path="res://scripts/Obstacle.gd" id="2_nyvos"]
+[ext_resource type="PackedScene" uid="uid://cfb3gyrctuhtc" path="res://crushers.tscn" id="4_3ppnj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nfwx"]
 size = Vector2(1152, 72)
@@ -18,11 +20,17 @@ offset_bottom = 648.0
 texture = ExtResource("1_aehny")
 expand_mode = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=371972205]
+[node name="Area2D" type="Area2D" parent="." unique_id=589328810]
+script = ExtResource("2_nyvos")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=373254601]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=373254601]
 position = Vector2(576, 612)
 shape = SubResource("RectangleShape2D_3nfwx")
 
 [node name="Spaceship" parent="." unique_id=1088702449 instance=ExtResource("2_cgf7r")]
-position = Vector2(520, 456)
+position = Vector2(512, 336)
+
+[node name="Crushers" parent="." unique_id=2005360761 instance=ExtResource("4_3ppnj")]
+position = Vector2(-16, 80)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
