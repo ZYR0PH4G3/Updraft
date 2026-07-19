@@ -5,13 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://l4mimevus11p" path="res://spaceship.tscn" id="2_cgf7r"]
 [ext_resource type="Script" uid="uid://b30c7ex0xkgkl" path="res://scripts/Obstacle.gd" id="2_nyvos"]
 [ext_resource type="PackedScene" uid="uid://cfb3gyrctuhtc" path="res://crushers.tscn" id="4_3ppnj"]
+[ext_resource type="PackedScene" uid="uid://3d76xdvlqu1r" path="res://asteroid.tscn" id="6_7lrg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nfwx"]
 size = Vector2(1152, 72)
 
 [node name="Game scene" type="Node2D" unique_id=38723924 node_paths=PackedStringArray("spaceship")]
 script = ExtResource("1_skpbr")
-crusher_scene = ExtResource("4_3ppnj")
+crusher_scene = Array[PackedScene]([ExtResource("4_3ppnj"), ExtResource("6_7lrg1")])
 spaceship = NodePath("Spaceship")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=356571394]

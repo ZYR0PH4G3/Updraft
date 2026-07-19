@@ -22,9 +22,15 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Spaceship":
-		print("GameOver!")
 		get_tree().call_deferred("reload_current_scene")
 
 
 func _on_score_area_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	
+	if body.name == "Spaceship" or body.is_in_group("Player"):
+		var main_game = get_tree().current_scene
+		if main_game and main_game.has_method("add_point"):
+			main_game.add_point()
+		
+		if has_node("ScoreArea/CollisionShape2D"):
+			$ScoreArea/CollisionShape2D.call_deferred("set_disabled", true)

@@ -12,7 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Spaceship":
-		print("Game Over!")
 	
 	get_tree().call_deferred("reload_current_scene") 

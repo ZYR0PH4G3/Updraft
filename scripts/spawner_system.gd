@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var crusher_scene: PackedScene
+@export var crusher_scene: Array[PackedScene] = []
 @export var spaceship: CharacterBody2D
 
 @export var spawn_distance: float = 800.0
@@ -23,7 +23,10 @@ func _process(delta: float) -> void:
 		spawn_obstacle()
 
 func spawn_obstacle() -> void:
-	var new_obstacle = crusher_scene.instantiate()
+	var random_index = randi() % crusher_scene.size()
+	var selected_scene = crusher_scene[random_index]
+	
+	var new_obstacle = selected_scene.instantiate()
 	
 	new_obstacle.global_position.y = next_spawn_y
 	
